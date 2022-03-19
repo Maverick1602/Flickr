@@ -1,0 +1,32 @@
+<body>
+    <div class="container pt-3">
+        <h3>Flickrrrrrr!</h3>
+        <form #searchForm="ngForm">
+            <div class="mt-3">
+                <input type="text" class="form-control" ngModel placeholder="Search Images" name="searchVal" autocomplete="off">
+            </div>
+        </form>    
+        <br>
+        <hr>
+        <br>
+        <h5 class="text-muted">Results</h5>
+          <div *ngIf="dataArr.stat == 'ok' ">
+            <div *ngFor="let i of arr; let a = index" #theLastList>
+                <span class="row">
+                    
+                    <span class="col-md-5">
+                        <img src="https://live.staticflickr.com/{{i.server}}/{{i.id}}_{{i.secret}}.jpg" alt={{i.title}}>
+                    </span>
+                    <span class="col-md-6 offset-1">
+                        <h3><strong>{{i.title}}</strong></h3>
+                    </span>
+                </span>
+
+                <hr>
+            </div>
+          </div>
+          <div *ngIf="dataArr.stat == 'fail' ">
+              <h1>Gotta use the search bar ^</h1>
+          </div>
+    </div>
+</body>
